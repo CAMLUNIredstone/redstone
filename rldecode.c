@@ -21,12 +21,8 @@ int decode(char * str){
             count ++;
         }else{
             if(count == 0){
-                return -1;
                 printf("%s\n","error message");
-            }
-            if(str[i] - '0' < 0){
                 return -1;
-                printf("%s\n","error message");
             }
             int out = 0;
             if(count>1){
@@ -62,10 +58,10 @@ int decode(char * str){
 int main(int argc, char *argv[]){
     int r = decode(argv[1]);
     if(r != 0){
-        return 0;
         printf("%s\n",argv[1]);
+        return 0;
     }else{
-        return -1;
         printf("%s\n","error message");
+        return -1;
     }
 }
