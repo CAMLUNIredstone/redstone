@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdbool.h>
+#include <string.h>
 
 bool isnumber(char c){
     if(c >= '0' && c <= '9'){
@@ -21,7 +22,6 @@ int decode(char * str){
             count ++;
         }else{
             if(count == 0){
-                printf("%s\n","error message");
                 return -1;
             }
             int out = 0;
@@ -51,17 +51,20 @@ int decode(char * str){
             }
         }
     }
-    printf("%s\n","");
+    printf("%s","\n");
     return count_result;
 }
 
 int main(int argc, char *argv[]){
+    if(argc > 1){
+        printf("%s\n","\nerror message");
+        return -1;
+    }
     int r = decode(argv[1]);
-    if(r != 0){
-        printf("%s\n",argv[1]);
+    if(r != -1){
         return 0;
     }else{
-        printf("%s\n","error message");
+        printf("%s\n","\nerror message");
         return -1;
     }
 }
