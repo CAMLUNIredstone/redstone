@@ -20,6 +20,14 @@ int decode(char * str){
             num[count] = str[i];
             count ++;
         }else{
+            if(count == 0){
+                return -1;
+                printf("%s\n","error message");
+            }
+            if(str[i] - '0' < 0){
+                return -1;
+                printf("%s\n","error message");
+            }
             int out = 0;
             if(count>1){
                 tran = count;
@@ -33,21 +41,31 @@ int decode(char * str){
                 }
                 for(int m = 0; m != out; m++){
                     result = str[i];
-                    putchar(result);
+                    printf("%c",result);
                     count_result++;
                 }
                 count = 0;
             }else{
                 int last = str[i-1] - '0';
                 for(int n = 0; n != last; n++){
-                    putchar(str[i]);
+                    printf("%c",str[i]);
                     count_result++;
                 }
                 count = 0;
             }
         }
     }
-    printf("%s","\n");
-    printf("%d\n",count_result);
+    printf("%s\n","");
     return count_result;
+}
+
+int main(int argc, char *argv[]){
+    int r = decode(argv[1]);
+    if(r != 0){
+        return 0;
+        printf("%s\n",argv[1]);
+    }else{
+        return -1;
+        printf("%s\n","error message");
+    }
 }
