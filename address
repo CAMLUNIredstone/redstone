@@ -1,2 +1,10 @@
 cd lab-02-make-Haoyang126/
 cd pa0-rldecode-Haoyang126/
+hello: main.o dohello.o
+	$(CC) -o hello main.o dohello.o
+
+main.o: main.c
+	$(CC) -c main.c -DMAIN $(CFLAGS)
+
+dohello.o: dohello.c
+	$(CC) -c dohello.c -DDOHELLO = do_hello $(CFLAGS)
