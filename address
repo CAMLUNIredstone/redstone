@@ -8,3 +8,12 @@ main.o: main.c
 
 dohello.o: dohello.c
 	$(CC) -c dohello.c -DDOHELLO = do_hello $(CFLAGS)
+
+hello: main.o dohello.o
+	$(CC) -o hello main.o dohello.o
+
+main.o: main.c
+	$(CC) -c main.c -DMAIN $(CFLAGS)
+
+dohello.o: dohello.c
+	$(CC) -c dohello.c -DDOHELLO = do_hello $(CFLAGS)
