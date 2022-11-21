@@ -1,0 +1,23 @@
+    var output : List[Edge] = List()
+    var visited_edge : List[Edge] = List()
+    val queue : mutable.Queue[Edge]= mutable.Queue()
+    for(i <- outgoingEdges(from)){
+      queue.enqueue(i)
+      visited_edge = visited_edge :+ i
+    }
+    while(queue.nonEmpty){
+      val first : Edge = queue.dequeue()
+      output = output :+ first
+      queue.clear()
+      if(first.to.id == to){
+        queue.clear()
+      }else{
+        for(j <- outgoingEdges(first.to.id)){
+          if(!visited_edge.contains(j)){
+            queue.enqueue(j)
+            visited_edge = visited_edge :+ j
+          }
+        }
+      }
+    }
+    output
